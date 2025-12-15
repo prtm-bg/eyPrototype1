@@ -1,0 +1,137 @@
+graph TB
+    subgraph DataSources["Data Sources"]
+        V1[Vehicle Telematics API<br/>Real-Time Sensor Data<br/>10 Vehicles]
+        V2[Historical Maintenance<br/>Records Server]
+        V3[Manufacturing CAPA/RCA<br/>Records]
+        V4[Service Center<br/>Scheduler API]
+    end
+
+    subgraph DigitalTwin["CAUSAL DIGITAL TWIN CORE"]
+        subgraph Setup["Initial Setup Phase"]
+            S1[Vehicle Component<br/>Topology Definition]
+            S2[Causal Graph Construction<br/>From Historical Data]
+        end
+        
+        subgraph Runtime["Runtime Analysis Engine"]
+            DT1[Temporal Transformer<br/>Process Sensor Streams]
+            DT2[Semantic Transformer<br/>Process Maintenance Logs]
+            DT3[Dynamic Causal Graph<br/>Vehicle Component Network]
+            DT4[GNN Propagation Engine<br/>Fault Propagation Modeling]
+            DT5[Root Cause Analysis<br/>Component Health Status]
+        end
+    end
+
+    subgraph AgenticAI["AGENTIC AI ORCHESTRATION LAYER"]
+        MA[Master Agent<br/>Main Orchestrator]
+        
+        subgraph WorkerAgents["Worker Agents"]
+            W1[Data Analysis Agent<br/>Monitor Telematics Stream]
+            W2[Diagnosis Agent<br/>Predictive Failure Models]
+            W3[Customer Engagement Agent<br/>Voice-Based Outreach]
+            W4[Scheduling Agent<br/>Appointment Management]
+            W5[Feedback Agent<br/>Post-Service Follow-up]
+            W6[Manufacturing Insights Agent<br/>RCA/CAPA Analysis]
+        end
+    end
+
+    subgraph Security["UEBA Security Layer"]
+        U1[Behavior Monitoring<br/>Baseline Analysis]
+        U2[Anomaly Detection<br/>Unauthorized Actions]
+        U3[Alert & Prevention<br/>Security Response]
+    end
+
+    subgraph CustomerInterface["Customer Interface"]
+        C1[Voice Agent<br/>Primary Communication]
+        C2[Mobile App<br/>Notifications & Reminders]
+    end
+
+    subgraph ServiceOps["Service Operations"]
+        O1[Service Center<br/>Capacity Management]
+        O2[Appointment Confirmation<br/>& Tracking]
+        O3[Service Completion<br/>& Records Update]
+    end
+
+    subgraph Manufacturing["Manufacturing Feedback Loop"]
+        M1[Quality Insights<br/>Dashboard]
+        M2[Design Improvement<br/>Recommendations]
+        M3[Defect Pattern Analysis<br/>Recurring Issues]
+    end
+
+    %% Data Flow to Digital Twin
+    V1 ==>|Streaming Data| DT1
+    V2 ==>|Historical Logs| DT2
+    V2 -.->|Initial Setup| S2
+    V3 -.->|CAPA/RCA Data| S2
+
+    %% Digital Twin Processing
+    DT1 ==> DT4
+    DT2 ==> DT4
+    DT3 ==> DT4
+    DT4 ==> DT5
+    S1 --> DT3
+    S2 --> DT3
+
+    %% Digital Twin to Worker Agents
+    DT5 ==>|Health Status| W1
+    DT5 ==>|Failure Predictions| W2
+
+    %% Master Agent Orchestration
+    MA ==>|Coordinate| W1
+    MA ==>|Coordinate| W2
+    MA ==>|Coordinate| W3
+    MA ==>|Coordinate| W4
+    MA ==>|Coordinate| W5
+    MA ==>|Coordinate| W6
+
+    %% Worker Agent Data Flow
+    W1 ==>|Early Warning Signs| W2
+    W2 ==>|Failure Diagnosis<br/>Priority Level| W3
+    W3 ==>|Customer Response| W4
+    W4 ==>|Booking Confirmed| O2
+    O2 ==>|Service Complete| W5
+    W5 ==>|Customer Feedback| V2
+
+    %% RCA/CAPA Analysis Flow
+    W2 ==>|Predicted Failures| W6
+    V2 ==>|Maintenance History| W6
+    V3 ==>|CAPA/RCA Records| W6
+    W6 ==>|Quality Insights| M1
+    M1 --> M2
+    M1 --> M3
+    M3 -.->|Design Changes| V3
+
+    %% Scheduling Flow
+    W4 <-->|Check Availability| V4
+    W4 <-->|Manage Slots| O1
+
+    %% Customer Engagement
+    W3 ==>|Initiate Call| C1
+    W3 ==>|Send Notification| C2
+    C1 ==>|Customer Decision| W4
+    C2 -.->|Reminder| W4
+
+    %% UEBA Monitoring
+    MA -.->|Monitor Behavior| U1
+    W1 -.->|Log Actions| U1
+    W2 -.->|Log Actions| U1
+    W3 -.->|Log Actions| U1
+    W4 -.->|Log Actions| U1
+    W5 -.->|Log Actions| U1
+    W6 -.->|Log Actions| U1
+    U1 --> U2
+    U2 -->|Anomaly Detected| U3
+    U3 -.->|Block/Alert| MA
+
+    %% Feedback to Digital Twin
+    O3 -.->|Service Outcomes| V2
+    W5 -.->|Update Records| DT2
+
+    style DigitalTwin fill:#e1f5ff
+    style AgenticAI fill:#ffe1f5
+    style Security fill:#ffe6e6
+    style Manufacturing fill:#fff4e1
+    style CustomerInterface fill:#e1ffe1
+    style ServiceOps fill:#f0f0f0
+    style DataSources fill:#f5f5f5
+    style Setup fill:#d0e8ff
+    style Runtime fill:#a8d5ff
