@@ -1,4 +1,4 @@
-# Vehicle Digital Twin - Agentic AI Prototype
+# Vehicle Causal Engine - Agentic AI Prototype
 
 A Streamlit-based prototype demonstrating predictive maintenance for vehicles using agentic AI, digital twin technology, and voice interaction.
 
