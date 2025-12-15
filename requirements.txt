@@ -1,0 +1,22 @@
+# Agentic AI Vehicle Digital Twin - Requirements
+# Run: pip install -r requirements.txt
+
+# Core
+streamlit>=1.28.0
+pandas>=2.0.0
+numpy>=1.24.0
+
+# Visualization
+matplotlib>=3.7.0
+networkx>=3.1
+
+# Voice/TTS
+gTTS>=2.3.0
+pyttsx3>=2.90
+
+# Optional - for enhanced AI capabilities
+# google-generativeai>=0.3.0
+# python-dotenv>=1.0.0
+
+# Utilities
+python-dateutil>=2.8.0
