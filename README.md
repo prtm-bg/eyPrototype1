@@ -1,6 +1,6 @@
 # Vehicle Causal Engine - Agentic AI Prototype
 
-A Streamlit-based prototype demonstrating predictive maintenance for vehicles using agentic AI, digital twin technology, and voice interaction.
+A Streamlit-based prototype demonstrating predictive maintenance for vehicles using agentic AI, Graph based Causal Analysis Engine, and voice interaction.
 
 ## Features
 
