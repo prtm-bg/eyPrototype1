@@ -8,7 +8,7 @@ A Streamlit-based prototype demonstrating predictive maintenance for vehicles us
 - **Real-time Simulation**: Simulate vehicle operation with live metrics
 - **Fault Detection**: Automatic detection of DTC (Diagnostic Trouble Codes)
 - **Agentic Workflow**: Master-Worker agent orchestration for fault response
-- **Digital Twin**: Causal graph visualization and root cause analysis
+- **Causal Engine**: Causal graph visualization and root cause analysis
 - **Voice Agent**: Text-to-speech notifications for detected faults
 - **Service Booking**: Automatic appointment scheduling with confirmation
 
